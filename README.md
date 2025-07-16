@@ -13,7 +13,7 @@ The Paragon Relay Circuit (PRC) is architected as a multi-tiered, heterarchical 
 │ RelayNode │---->│ RelayNode │---->│ RelayNode │
 │    (A)    │<----│    (B)    │<----│    (C)    │
 └───────────┘     └───────────┘     └───────────┘
-     ^                  ^                  ^
-     |                  |                  |
-    Feedback          Feedback           Feedback
+      |                 |                 |
+      v                 v                 v
+   Feedback          Feedback          Feedback
 ```
