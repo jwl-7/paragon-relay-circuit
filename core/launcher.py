@@ -1,6 +1,5 @@
 """Core Launcher"""
 
-from core.launcher_messages import LAUNCH_BANNER_ACTUAL
 from core.launcher_messages import ParagonRelayCircuitCoreLauncherMessages
 
 class ParagonRelayCircuitLauncher:
@@ -15,4 +14,4 @@ class ParagonRelayCircuitLauncher:
 
     def run(self):
         """Initiate launch."""
-        print(self.launcher_messages.decrypt(LAUNCH_BANNER_ACTUAL))
+        print(self.launcher_messages.decrypt(self.launcher_messages.launch_banner))
