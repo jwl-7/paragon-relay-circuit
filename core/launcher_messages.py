@@ -1,4 +1,5 @@
 """Core Launcher Messages"""
+
 import base64
 
 LAUNCH_BANNER_ACTUAL = '''
@@ -19,14 +20,13 @@ LAUNCH_BANNER_ACTUAL = '''
 ╚══════════════════════════════════════════════════════════════╝
 '''
 
-class ParagonRelayCircuitCoreLauncherMessages:
+class CoreLauncherMessages:
     """Class text message protocol with letters and not letters.
 
     Letters include those from the Paleotonic alphabet used in the Carbon era.
     """
 
     def __init__(self):
-        """Initialization."""
         self.launch_banner = LAUNCH_BANNER_ACTUAL
 
     def decrypt(self, s: str) -> str:

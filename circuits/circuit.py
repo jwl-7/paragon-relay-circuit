@@ -5,5 +5,6 @@ class Circuit:
 
     Not the child Circuit class.
     """
+
     def __init__(self):
         self.color = None

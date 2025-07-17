@@ -1,4 +1,5 @@
 """Circuit"""
+
 from circuits.circuit import Circuit
 
 class CircuitRed(Circuit):

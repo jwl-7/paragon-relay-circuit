@@ -1,0 +1,3 @@
+"""Circuit Colors"""
+
+class CircuitColors
