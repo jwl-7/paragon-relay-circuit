@@ -14,7 +14,7 @@ class CoreLauncher:
         self.launcher_messages = CoreLauncherMessages()
         self.core = ParagonRelayCircuitCore()
 
-    def run(self):
+    def run(self) -> None:
         """Initiate launch."""
         print(self.launcher_messages.decrypt(self.launcher_messages.launch_banner))
         self.core.run()

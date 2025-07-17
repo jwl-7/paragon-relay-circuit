@@ -1,4 +1,5 @@
 """Main"""
+
 from core.launcher import ParagonRelayCircuitLauncher
 
 if __name__ == '__main__':

@@ -14,6 +14,6 @@ class ParagonRelayCircuitCore:
     def __init__(self):
         self.circuit = Circuit()
 
-    def run(self):
+    def run(self) -> None:
         """Starts the core."""
         pass
