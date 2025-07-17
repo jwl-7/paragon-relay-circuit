@@ -1,7 +1,7 @@
 """Main"""
 
-from core.launcher import ParagonRelayCircuitLauncher
+from core.launcher import CoreLauncher
 
 if __name__ == '__main__':
-    launcher = ParagonRelayCircuitLauncher()
+    launcher = CoreLauncher()
     launcher.run()

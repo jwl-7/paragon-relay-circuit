@@ -1,6 +1,6 @@
 """Paragon Relay Circuit Core"""
 
-from circuits.circuit import Circuit
+from circuits.circuit_core import CircuitCore
 
 class ParagonRelayCircuitCore:
     """The Core
@@ -12,8 +12,8 @@ class ParagonRelayCircuitCore:
     """
 
     def __init__(self):
-        self.circuit = Circuit()
+        self.circuit_core = CircuitCore()
 
     def run(self) -> None:
         """Starts the core."""
-        pass
+        self.circuit_core.run()

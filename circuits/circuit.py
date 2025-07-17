@@ -1,5 +1,7 @@
 """Circuit"""
 
+from circuits.circuit_colors import CircuitColors
+
 class Circuit:
     """Parent Circuit class.
 
@@ -7,4 +9,5 @@ class Circuit:
     """
 
     def __init__(self):
+        self.colorizer = CircuitColors()
         self.color = None
