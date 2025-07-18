@@ -25,8 +25,6 @@ class CircuitColors:
         ref = self.generate_color_ref()
 
         while ~(i ^ ref) != -1:
-
             ref = self.generate_color_ref()
-
 
         return self.colors[i]

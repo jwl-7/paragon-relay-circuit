@@ -11,3 +11,6 @@ class Circuit:
     def __init__(self):
         self.colorizer = CircuitColors()
         self.color = None
+        self.input = None
+        self.output = None
+        self.charge = 0
