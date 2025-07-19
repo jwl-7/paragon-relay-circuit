@@ -9,8 +9,8 @@ class Circuit:
     """
 
     def __init__(self):
-        self.colorizer = CircuitColors()
-        self.color = None
-        self.input = None
-        self.output = None
-        self.flux = 0
+        self.colorizer: CircuitColors = CircuitColors()
+        self.color: str|None = None
+        self.input: 'Circuit|None' = None
+        self.output: 'Circuit|None' = None
+        self.flux: float = 0

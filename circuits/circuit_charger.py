@@ -46,5 +46,7 @@ class CircuitCharger:
 
     def charge_circuits(self, circuits: list[Circuit]) -> None:
         """Charge each circuit fully like zzZZzzZ."""
+        print('\n~>~~~ CIRCUITS CHARGING ~~~<~')
         for circuit in circuits:
             self.charge(circuit)
+        print('~>~~~ CIRCUITS CHARGED  ~~~<~\n')

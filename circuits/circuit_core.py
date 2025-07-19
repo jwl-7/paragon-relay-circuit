@@ -35,9 +35,9 @@ class CircuitCore:
         print("=============================")
         print(f"{'CORE'.center(14)}{'STATUS'.center(14)}")
         print("=============================")
-        print(f"{self.red_circuit.color.center(14)}{'Active'.center(14)}")
-        print(f"{self.blue_circuit.color.center(14)}{'Active'.center(14)}")
-        print(f"{self.green_circuit.color.center(14)}{'Active'.center(14)}")
+        print(f"{self.red_circuit.color.center(14)}{'ACTIVE'.center(14)}")
+        print(f"{self.blue_circuit.color.center(14)}{'ACTIVE'.center(14)}")
+        print(f"{self.green_circuit.color.center(14)}{'ACTIVE'.center(14)}")
         print("=============================\n")
 
     def initialize_circuits(self) -> None:
