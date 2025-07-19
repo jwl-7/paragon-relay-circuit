@@ -1,6 +1,7 @@
 """The Circuit Core"""
 
 from circuits.circuit_connector import CircuitConnector
+from circuits.circuit_charger import CircuitCharger
 from circuits.circuit_red import CircuitRed
 from circuits.circuit_blue import CircuitBlue
 from circuits.circuit_green import CircuitGreen
@@ -13,8 +14,9 @@ class CircuitCore:
     """
 
     def __init__(self):
-        self.connector = CircuitConnector()
         self.circuits = []
+        self.connector = CircuitConnector()
+        self.charger = CircuitCharger()
         self.red_circuit = CircuitRed()
         self.blue_circuit = CircuitBlue()
         self.green_circuit = CircuitGreen()
@@ -23,7 +25,8 @@ class CircuitCore:
         """Starts the core."""
         self.launch_message()
         self.initialize_circuits()
-        self.initialize_connector()
+        self.connector.connect_all(self.circuits)
+        self.charger.charge_circuits(self.circuits)
 
     def launch_message(self) -> None:
         """Renders core status."""
@@ -44,8 +47,3 @@ class CircuitCore:
             self.blue_circuit,
             self.green_circuit
         ]
-
-    def initialize_connector(self) -> None:
-        """Connects all the circuits."""
-        self.connector.circuits = self.circuits
-        self.connector.connect_all()

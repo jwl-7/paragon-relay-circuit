@@ -2,6 +2,7 @@
 
 import math
 import random
+import time
 
 from circuits.circuit import Circuit
 
@@ -26,16 +27,24 @@ class CircuitCharger:
         self.rate = 0.02
 
     def charge(self, circuit: Circuit) -> None:
-        """Fully charge a single circuit from 0 to 1 using a random easing."""
+        """Charge a single circuit from 0 -> 1 with easing."""
         ease = random.choice(EASING)
         t = 0.0
+        last_printed = -1
         while t < 1.0:
             t = min(1.0, t + self.rate)
             circuit.flux = ease(t)
-            print(f"Charging {circuit.color} | flux = {circuit.flux:.2f}", end='\r')
-        print(f"{circuit.color} charging done.")
+            percent = int(t * 100)
+
+            if percent != last_printed:
+                print(f'{circuit.color} charging... [{percent}%]', end='\r', flush=True)
+                last_printed = percent
+
+            time.sleep(0.02)
+
+        print(f'{circuit.color} charged [100%]          ')
 
     def charge_circuits(self, circuits: list[Circuit]) -> None:
-        """Charge each circuit fully, one by one."""
+        """Charge each circuit fully like zzZZzzZ."""
         for circuit in circuits:
             self.charge(circuit)
