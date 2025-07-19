@@ -28,6 +28,7 @@ class CircuitColors:
     """
 
     def __init__(self):
+        self.empty = CircuitColor('EMPTY', (0, 0, 0))
         self.red = CircuitColor('RED', (255, 0, 0))
         self.green = CircuitColor('GREEN', (0, 255, 0))
         self.blue = CircuitColor('BLUE', (0, 0, 255))

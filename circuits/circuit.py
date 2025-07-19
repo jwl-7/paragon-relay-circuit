@@ -10,7 +10,7 @@ class Circuit:
 
     def __init__(self):
         self.colorizer = CircuitColors()
-        self.color = None
+        self.color = self.colorizer.empty
         self.input = None
         self.output = None
         self.flux = 0.0
