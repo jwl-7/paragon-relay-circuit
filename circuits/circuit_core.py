@@ -2,6 +2,7 @@
 
 from circuits.circuit_connector import CircuitConnector
 from circuits.circuit_charger import CircuitCharger
+from circuits.circuit_printer import CircuitPrinter
 from circuits.circuit_red import CircuitRed
 from circuits.circuit_blue import CircuitBlue
 from circuits.circuit_green import CircuitGreen
@@ -14,36 +15,27 @@ class CircuitCore:
     """
 
     def __init__(self):
-        self.circuits = []
         self.connector = CircuitConnector()
         self.charger = CircuitCharger()
+        self.printer = CircuitPrinter()
         self.red_circuit = CircuitRed()
         self.blue_circuit = CircuitBlue()
         self.green_circuit = CircuitGreen()
-
-    def run(self) -> None:
-        """Starts the core."""
-        self.launch_message()
-        self.initialize_circuits()
-        self.connector.connect_all(self.circuits)
-        self.charger.charge_circuits(self.circuits)
-
-    def launch_message(self) -> None:
-        """Renders core status."""
-        print("\n=============================")
-        print("    Circuit Core Status       ")
-        print("=============================")
-        print(f"{'CORE'.center(14)}{'STATUS'.center(14)}")
-        print("=============================")
-        print(f"{self.red_circuit.color.center(14)}{'ACTIVE'.center(14)}")
-        print(f"{self.blue_circuit.color.center(14)}{'ACTIVE'.center(14)}")
-        print(f"{self.green_circuit.color.center(14)}{'ACTIVE'.center(14)}")
-        print("=============================\n")
-
-    def initialize_circuits(self) -> None:
-        """Builds list of circuits."""
         self.circuits = [
             self.red_circuit,
             self.blue_circuit,
             self.green_circuit
         ]
+
+    def run(self) -> None:
+        """Starts the core."""
+        self.core_status()
+        self.connector.connect_circuits(self.circuits)
+        self.charger.charge_circuits(self.circuits)
+
+    def core_status(self) -> None:
+        """Displays core status."""
+        self.printer.section('CORE STATUS')
+        self.printer.status(self.red_circuit)
+        self.printer.status(self.blue_circuit)
+        self.printer.status(self.green_circuit)

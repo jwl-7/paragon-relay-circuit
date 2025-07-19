@@ -5,6 +5,7 @@ import random
 import time
 
 from circuits.circuit import Circuit
+from circuits.circuit_printer import CircuitPrinter
 
 EASING = [
     lambda t: 0.5 + 0.5 * math.sin(12 * math.pi * t) * (1 - t),
@@ -24,29 +25,31 @@ class CircuitCharger:
     """
 
     def __init__(self):
+        self.printer = CircuitPrinter()
         self.rate = 0.02
 
     def charge(self, circuit: Circuit) -> None:
-        """Charge a single circuit from 0 -> 1 with easing."""
+        """Charges circuit."""
         ease = random.choice(EASING)
         t = 0.0
         last_printed = -1
+        bar_width = 30
+
         while t < 1.0:
             t = min(1.0, t + self.rate)
             circuit.flux = ease(t)
             percent = int(t * 100)
 
             if percent != last_printed:
-                print(f'{circuit.color} charging... [{percent}%]', end='\r', flush=True)
+                self.printer.charging(circuit, t, bar_width)
                 last_printed = percent
 
             time.sleep(0.02)
 
-        print(f'{circuit.color} charged [100%]          ')
+        self.printer.charged(circuit, bar_width)
 
     def charge_circuits(self, circuits: list[Circuit]) -> None:
-        """Charge each circuit fully like zzZZzzZ."""
-        print('\n~>~~~ CIRCUITS CHARGING ~~~<~')
+        """Charges all circuits."""
+        self.printer.section('CHARGING CIRCUITS')
         for circuit in circuits:
             self.charge(circuit)
-        print('~>~~~ CIRCUITS CHARGED  ~~~<~\n')

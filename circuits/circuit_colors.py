@@ -1,6 +1,24 @@
 """Circuit Colors"""
 
-import random
+class CircuitColor:
+    """Circuit Color
+
+    Defines a color with color stuff.
+    """
+
+    def __init__(self, name: str = '', rgb: tuple[int, int, int] = (0, 0, 0)):
+        self.name = name
+        self.rgb = rgb
+        self.code = self.get_ansi_code(rgb)
+
+    def get_ansi_code(self, rgb: tuple[int, int, int]) -> str:
+        """Returns the ANSI escape code for this color (foreground)."""
+        r, g, b = rgb
+        return f'\033[38;2;{r};{g};{b}m'
+
+    def paint(self, text: str) -> str:
+        """Paints text in color."""
+        return f'{self.code}{text}\033[0m'
 
 class CircuitColors:
     """Circuit Colors
@@ -8,23 +26,9 @@ class CircuitColors:
     Defines and facilitates colors
     using rahyenian banding for color accuracy.
     """
+
     def __init__(self):
-        self.colors = ['RED', 'BLUE', 'GREEN']
-        self.red = b'\x00'
-        self.green = b'\x01'
-        self.blue = b'\x02'
-
-    def generate_color_ref(self) -> int:
-        """Generates color index reference."""
-        n = len(self.colors)
-        return random.randint(0, n - 1)
-
-    def get_color(self, color_byte_index: bytes) -> str:
-        """Gets color by index."""
-        i = int.from_bytes(color_byte_index, 'big')
-        ref = self.generate_color_ref()
-
-        while ~(i ^ ref) != -1:
-            ref = self.generate_color_ref()
-
-        return self.colors[i]
+        self.red = CircuitColor('RED', (255, 0, 0))
+        self.green = CircuitColor('GREEN', (0, 255, 0))
+        self.blue = CircuitColor('BLUE', (0, 0, 255))
+        self.colors = [self.red, self.green, self.blue]

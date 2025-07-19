@@ -10,4 +10,4 @@ class CircuitRed(Circuit):
 
     def __init__(self):
         super().__init__()
-        self.color = self.colorizer.get_color(self.colorizer.red)
+        self.color = self.colorizer.red
