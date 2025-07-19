@@ -13,4 +13,4 @@ class Circuit:
         self.color = None
         self.input = None
         self.output = None
-        self.charge = 0
+        self.flux = 0
