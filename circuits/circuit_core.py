@@ -14,6 +14,7 @@ class CircuitCore:
 
     def __init__(self):
         self.connector = CircuitConnector()
+        self.circuits = []
         self.red_circuit = CircuitRed()
         self.blue_circuit = CircuitBlue()
         self.green_circuit = CircuitGreen()
@@ -21,6 +22,7 @@ class CircuitCore:
     def run(self) -> None:
         """Starts the core."""
         self.launch_message()
+        self.initialize_circuits()
         self.initialize_connector()
 
     def launch_message(self) -> None:
@@ -35,11 +37,15 @@ class CircuitCore:
         print(f"{self.green_circuit.color.center(14)}{'Active'.center(14)}")
         print("=============================\n")
 
-    def initialize_connector(self) -> None:
-        """Initializes connector and connects all the circuits."""
-        self.connector.circuits = [
+    def initialize_circuits(self) -> None:
+        """Builds list of circuits."""
+        self.circuits = [
             self.red_circuit,
             self.blue_circuit,
             self.green_circuit
         ]
+
+    def initialize_connector(self) -> None:
+        """Connects all the circuits."""
+        self.connector.circuits = self.circuits
         self.connector.connect_all()
