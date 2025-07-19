@@ -1,6 +1,7 @@
 """Connect"""
 
 import random
+import time
 
 from circuits.circuit import Circuit
 from circuits.circuit_printer import CircuitPrinter
@@ -14,6 +15,7 @@ class CircuitConnector:
 
     def __init__(self):
         self.printer = CircuitPrinter()
+        self.delay = 1
 
     def connect(self, circuits: list[Circuit], circuit: Circuit) -> None:
         """Recursively fills the input and output connection for a single circuit."""
@@ -29,9 +31,11 @@ class CircuitConnector:
         if not a.input and not b.output and b.input is not a:
             a.input = b
             self.printer.connection(b, a)
+            time.sleep(self.delay)
         elif not a.output and not b.input and b.output is not a:
             a.output = b
             self.printer.connection(a, b)
+            time.sleep(self.delay)
         elif not circuit.input or not circuit.output:
             self.connect(circuits, a)
 

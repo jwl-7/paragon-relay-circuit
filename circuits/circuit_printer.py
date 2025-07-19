@@ -1,5 +1,8 @@
 """Circuit Printer"""
 
+import time
+import sys
+
 from circuits.circuit import Circuit
 
 class CircuitPrinter:
@@ -19,10 +22,14 @@ class CircuitPrinter:
         print(f'{border}\n')
 
     def status(self, circuit: Circuit) -> None:
-        """Prints circuit status."""
+        """Prints circuit status with transition."""
         colored_name = circuit.color.paint(circuit.color.name.center(14))
-        colored_status = '\033[32m' + 'ACTIVE'.center(14) + '\033[0m'
-        print(f'{colored_name}{colored_status}')
+        for state, color_code in [('INACTIVE', '\033[90m'), ('BOOTING', '\033[93m'), ('ACTIVE', '\033[32m')]:
+            colored_status = f"{color_code}{state.center(14)}\033[0m"
+            sys.stdout.write(f"\r{colored_name}{colored_status}")
+            sys.stdout.flush()
+            time.sleep(0.4)
+        print()
 
     def connection(self, a: Circuit, b: Circuit) -> None:
         """Prints circuit connection."""
