@@ -11,13 +11,15 @@ class CircuitPrinter:
     Print utils to print circuits in print form.
     """
 
-    ARROW = '->'
-    WIDTH = 40
-    BAR_WIDTH = 30
     GREY = '\033[90m'
     GREEN = '\033[32m'
     YELLOW = '\033[93m'
     RESET = '\033[0m'
+
+    ARROW = '->'
+
+    WIDTH = 40
+    BAR_WIDTH = 30
 
     def __init__(self):
         pass
