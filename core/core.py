@@ -5,7 +5,7 @@ from circuits.circuit_core import CircuitCore
 class ParagonRelayCircuitCore:
     """The Core
 
-    Controls the core and facilitires core
+    Controls the core and facilitates core
     processes such as the core transposition of
     the core xantrius neural protocols based off
     the core flumpunium traxalok archirithm.
