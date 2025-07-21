@@ -33,7 +33,6 @@ class CircuitCharger:
         ease = random.choice(self.EASING)
         t = 0.0
         last_printed = -1
-        bar_width = 30
 
         while t < 1.0:
             t = min(1.0, t + self.rate)
@@ -41,12 +40,12 @@ class CircuitCharger:
             percent = int(t * 100)
 
             if percent != last_printed:
-                self.printer.charging(circuit, t, bar_width)
+                self.printer.charging(circuit, t)
                 last_printed = percent
 
             time.sleep(0.02)
 
-        self.printer.charged(circuit, bar_width)
+        self.printer.charged(circuit)
 
     def charge_circuits(self, circuits: list[Circuit]) -> None:
         """Charges all circuits."""
