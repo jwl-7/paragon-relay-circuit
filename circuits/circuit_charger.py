@@ -30,7 +30,7 @@ class CircuitCharger:
 
     def charge(self, circuit: Circuit) -> None:
         """Charges circuit."""
-        ease = random.choice(EASING)
+        ease = random.choice(self.EASING)
         t = 0.0
         last_printed = -1
         bar_width = 30
