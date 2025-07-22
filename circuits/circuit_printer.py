@@ -1,7 +1,6 @@
 """Circuit Printer"""
 
 import time
-import sys
 
 from circuits.circuit import Circuit
 
@@ -26,7 +25,7 @@ class CircuitPrinter:
 
     def section(self, text: str) -> None:
         """Prints section header."""
-        border = '=' * self.WIDTH
+        border = '═' * self.WIDTH
         print(f'\n{border}')
         print(f'{self.YELLOW}{text.center(self.WIDTH)}{self.RESET}')
         print(f'{border}\n')
